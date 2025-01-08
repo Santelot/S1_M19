@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                 document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M19</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Inicio de la misión y preparación para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy exploraremos un aspecto crucial del modelado 3D: las mallas. Aprenderemos cómo estas influyen en nuestros diseños y cómo crear modelos que no solo se vean bien, sino que también sean funcionales en el mundo real. Prepárense para un viaje desde lo virtual hasta lo físico."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero ver cómo se sienten hoy. Si están listos para modelar, hagan un círculo con los brazos. Si necesitan un momento para centrarse, toquen sus hombros con las manos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por esta oportunidad de aprender y crear juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Nuestros objetivos para hoy son tres: 1. Aprender qué son las mallas en el modelado 3D y cómo afectan los diseños. 2. Comprender la diferencia entre modelos para entornos 3D y modelos para entornos físicos. 3. Conocer técnicas para crear mallas 'Manifold' (cerradas) en TinkerCAD."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Introducción a innovaciones relacionadas con modelado 3D funcional.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy veremos cómo la comprensión de las mallas permite crear modelos 3D funcionales y prácticos. Les presento el diseño de prótesis impresas en 3D. Estas prótesis no solo se ven bien, sino que también funcionan para mejorar la calidad de vida de las personas que las utilizan. Este avance demuestra cómo el modelado 3D puede tener un impacto real en nuestro mundo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Video de Prótesis 3D".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Observen este video para ver cómo se crean y utilizan estas prótesis. Presten atención a la forma en que se diseñan y cómo cada detalle de la malla influye en la funcionalidad y la comodidad de la prótesis. Verán que es fundamental tener cuidado con la geometría, para evitar problemas de impresión y funcionamiento. Los modelos deben ser precisos y estar correctamente diseñados para asegurar su efectividad."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Prótesis 3D".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Las prótesis impresas en 3D son un claro ejemplo de cómo el diseño cuidadoso y la atención a las mallas son fundamentales para crear modelos funcionales. Hoy, aprenderemos las técnicas para asegurar que nuestros diseños sean sólidos y prácticos, permitiéndonos crear objetos que no solo se vean bien, sino que también cumplan su función en el mundo real."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 20 minutos</div>
+        <div class="subtitle">Exploración y explicación de mallas y modelos funcionales en 3D.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción a las Mallas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy exploraremos el concepto de 'malla' en el modelado 3D. Una malla es como el esqueleto de un objeto 3D, formada por una red de triángulos o polígonos que definen su forma y superficie. Imaginen una red que envuelve un objeto, esa red es la malla. Comprender cómo funcionan las mallas es fundamental para crear modelos funcionales, especialmente si planean imprimirlos en 3D.  Dominar las mallas nos permite construir modelos sólidos y precisos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "¿Qué es una Malla?".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "La malla es una estructura que consiste en vértices, aristas y caras que definen las formas 3D. Los vértices son los puntos donde se unen las líneas, las aristas son las líneas que conectan los vértices y las caras son las superficies delimitadas por las aristas. Visualizar la malla es clave para entender cómo se construye la forma de un objeto 3D.  Imaginen que la malla es como una estructura alámbrica que luego se cubre con una piel, dando como resultado la forma que vemos. Una malla bien construida es la base de un modelo 3D sólido y bien definido."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "Mallas en TinkerCAD".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En TinkerCAD, aunque no vemos directamente los vértices y aristas de la malla, esta influye en cómo se comportan los objetos.  Por ejemplo, la cantidad de polígonos o triángulos en un modelo define su suavidad y detalle. Un modelo con muchos polígonos tendrá una superficie más suave y detallada, mientras que un modelo con menos polígonos se verá más angular.  Comprender cómo las mallas definen la forma y el detalle en TinkerCAD nos permite crear modelos que se ajusten a nuestras necesidades."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Mallas para Entornos 3D vs. Mallas para Entornos Físicos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es importante distinguir entre mallas para entornos 3D virtuales (como videojuegos) y mallas para objetos físicos (como para impresión 3D).  En entornos virtuales, se pueden tener modelos con geometría compleja, con superficies que se cruzan o que tienen partes que flotan, ya que en el mundo virtual, no hay leyes de la física que se lo impidan.  En entornos físicos, como la impresión 3D, se necesita un modelo con una malla que esté cerrada (o 'Manifold'), que tenga espesor y que todas las superficies estén conectadas, ya que de no ser así, la impresora no podrá realizar la impresión.  Entender esta diferencia es crucial para que los modelos que diseñemos se puedan materializar con éxito."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "¿Qué es una Malla 'Manifold'?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una malla 'Manifold', también conocida como 'malla cerrada', es aquella en la que cada arista del modelo está compartida por exactamente dos caras. Esto significa que la malla forma un volumen sólido sin agujeros ni superficies desconectadas. Si un modelo no es 'Manifold', puede tener problemas para imprimirse en 3D, ya que la impresora no entenderá qué es el interior y qué es el exterior del objeto.  En términos sencillos, una malla 'Manifold' es como un recipiente cerrado: no hay ningún agujero ni espacios por donde se pueda escapar su contenido."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 14 "Problemas Comunes con Mallas No Manifold".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Los problemas más comunes con mallas no 'Manifold' incluyen: agujeros, superficies que se cruzan, bordes que no están conectados y caras que están invertidas. Estos errores pueden causar que los modelos no se impriman correctamente, o que las piezas se vean dañadas o deformadas. Imaginen intentar inflar un globo que tiene un agujero: el aire simplemente se escaparía, y el globo nunca tomaría su forma correcta. Lo mismo pasa con los diseños 3D: si tienen agujeros o errores en la malla, la impresora no podrá darle forma."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 7 (2 minutos):</strong> Proyectar Diapositiva 15 "Técnicas para Crear Mallas 'Manifold' en TinkerCAD".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En TinkerCAD, aunque no podemos editar directamente la malla, podemos usar algunas técnicas para crear modelos 'Manifold': Utilicen formas sólidas: Eviten formas huecas o finas que puedan generar problemas al unirse con otras formas.  Asegúrense de que las formas se solapen: Cuando unan diferentes objetos, asegúrense de que se solapen lo suficiente para formar un solo volumen continuo.  Usen la herramienta de Agrupar: Agrupar las formas en una sola entidad, ayuda a TinkerCAD a generar una malla continua, a pesar de que las piezas tengan uniones no perfectas. Con estas técnicas, podemos construir modelos más robustos y aptos para la impresión 3D."
+                </td>
+            </tr>
+             <tr>
+                <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Geometrías a Evitar".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Existen ciertas geometrías que debemos evitar para asegurar que nuestro modelo sea 'Manifold':  Eviten las superficies muy finas: Estas pueden ser difíciles de imprimir y pueden generar problemas en el modelo.  Eviten las intersecciones complejas: Las formas que se cruzan de manera complicada pueden dificultar la creación de una malla continua.  Eviten las superficies flotantes: Las partes que no están unidas al resto del modelo pueden causar problemas al imprimirse. Al evitar estas geometrías, podemos asegurar que nuestros modelos sean funcionales y fáciles de imprimir en 3D.  En general, siempre es preferible diseñar con formas sencillas y geométricas que sean fáciles de unir y que conformen un volumen sólido."</td>
+            </tr>
+           <tr>
+                 <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Importancia de las Mallas en el Mundo Real".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La comprensión de las mallas es fundamental en muchas áreas, desde la creación de prótesis médicas y repuestos de maquinaria hasta la creación de obras de arte y prototipos.  Un buen diseño de malla asegura que el objeto pueda ser fabricado, ensamblado o utilizado de manera efectiva.  La atención a la malla no sólo es una cuestión técnica, sino que es una base para la creación de modelos funcionales que pueden cambiar el mundo.  Así que ahora ustedes tienen en sus manos el poder de construir y materializar objetos que pueden ser funcionales y prácticos en el mundo real."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "El Dato Curioso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Curiosamente, el concepto de mallas no es exclusivo del modelado 3D. Los principios básicos de las mallas tienen sus raíces en la geometría y la topología, disciplinas matemáticas que estudian las formas y sus propiedades. De hecho, los geodestas de la antigüedad ya utilizaban redes triangulares para representar la superficie de la Tierra en mapas. Estas redes se pueden ver en mapas antiguos, los cuales se asemejan a las mallas que vemos en el mundo digital.  La matemática y la geometría son la base del modelado 3D, así que ahora tienen dos razones para ponerles mucha atención: una es para pasar sus exámenes y la otra para crear modelos increíbles."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 11 (1 minuto):</strong> Proyectar Diapositiva 19 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos avanzado en nuestros objetivos.  Ahora conocen qué son las mallas en el modelado 3D y cómo afectan los diseños.  Comprenden la diferencia entre modelos para entornos virtuales y modelos para entornos físicos. Y conocen las técnicas para crear mallas 'Manifold' en TinkerCAD. ¡Buen trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Pausa para relajar la mente y enfocarse en la respiración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Meditación Flash".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer una pausa para relajar nuestras mentes. Siéntense cómodamente, cierren los ojos y concéntrense en su respiración durante 1 minuto. Inhalen profundamente y exhalen lentamente. Esto nos ayudará a calmar la mente y enfocarnos mejor."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 21 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Reflexión sobre la Meditación".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo. Este ejercicio de meditación flash nos ayuda a reducir el estrés y mejorar nuestra concentración. Ahora estamos listos para retomar la actividad con una mente más clara."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 5 minutos</div>
+        <div class="subtitle">Formación de equipos y planificación del Challenge.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Formación de Equipos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta actividad formen equipos de dos personas, pero esta vez trabajen con alguien diferente. Tómense un minuto para elegir a su nuevo compañero."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 24 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Recoger Magic Tablets".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus parejas, cada equipo enviará a un representante por su Magic Tablet."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 26 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 27 "Planificación de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que ya tienen a sus compañeros, vamos a planificar el trabajo para el Challenge. Usen su tablero Kanban para organizar sus ideas. Tienen dos minutos para identificar las tareas necesarias y asignarlas a cada miembro del equipo. Recuerden que una buena planificación es esencial para lograr un resultado exitoso. Planifiquen de la misma manera que un arquitecto planifica los planos para un edificio, identificando cada detalle y paso."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 14.5 minutos</div>
+        <div class="subtitle">Diseño de una isla flotante con mallas cerradas en TinkerCAD.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 28 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de aplicar lo que hemos aprendido. El reto de hoy pondrá a prueba su creatividad y habilidad técnica en el diseño 3D. Vamos a crear algo mágico y funcional."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 29 "Diseño de la Isla Flotante".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para este Challenge, diseñarán en TinkerCAD una isla flotante. La isla deberá tener árboles, un pequeño estanque y una casa. Además, deberán asegurarse de que todos los elementos estén firmemente integrados en la geometría para formar una malla 'Manifold', lista para ser impresa en 3D. Los niveles de dificultad son:
+                 <ul>
+                    <li><strong>Rookie:</strong> Diseñar una isla flotante con al menos 2 árboles, un estanque y una casa, asegurándose de que todos los elementos estén unidos a la base de la isla.</li>
+                    <li><strong>Master:</strong> (+) La isla deberá ser totalmente cerrada, sin agujeros ni superficies que se crucen, y debe flotar (teóricamente) sin fugas de agua.</li>
+                    <li><strong>Hacker:</strong> (+)  La isla deberá cumplir con los puntos del nivel Master, y agregarle al menos dos construcciones adicionales, además de la casa (como un puente, una torre, etc.)</li>
+                 </ul>
+                 Recuerden que el objetivo es crear una isla que teóricamente podría flotar en una bañera, sin permitir que entre agua. Usen las técnicas que aprendimos en el Brain Gym para evitar problemas de malla.  Imaginen que están diseñando un prototipo para un parque temático, donde la funcionalidad y la estética son igualmente importantes."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 30 "Cronómetro - 10 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 31 "Presentación de Islas Flotantes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ha llegado el momento de mostrar sus creaciones. Cada equipo tendrá un minuto para presentar su isla flotante al resto de la clase. Expliquen cómo unieron cada pieza para formar una malla cerrada y qué estrategias usaron para asegurar que su isla pueda flotar teóricamente en una bañera.  Compartir sus procesos y soluciones les ayudará a aprender de otros y a perfeccionar sus habilidades."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 32 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 33 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos completado todos los objetivos de nuestra misión.  Han aprendido acerca de las mallas en el modelado 3D, entienden la diferencia entre modelos virtuales y físicos y conocen técnicas para crear mallas cerradas en TinkerCAD. ¡Excelente trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 34 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado su creatividad y dominio de las herramientas de TinkerCAD. Todos se llevan Mon-e por su esfuerzo y dedicación. ¡Sigamos explorando y creando juntos!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Pregunta sorpresa para evaluar la atención.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+             <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 35 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora del Easter Egg. La siguiente diapositiva tiene una pregunta sobre algo que mencioné en el Brain Gym. Los tres primeros en levantar la mano y dar la respuesta correcta ganarán Mon-e. Recuerden, no digan la respuesta en voz alta, solo levanten la mano. ¿Están listos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Pregunta del Easter Egg".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué profesionales de la antigüedad utilizaban redes triangulares similares a las mallas para representar la superficie de la Tierra en mapas?"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 37 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído.  Ahora tú, dos.  Y por último, el tres.  La respuesta correcta es: ¡Los geodestas! ¡Felicidades a los ganadores, les toca Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la clase y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 38 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos llegado al final de nuestra misión. Por favor, cada equipo pase al frente para devolver sus Magic Tablets y asegúrense de dejar sus áreas de trabajo limpias y ordenadas. Recordemos que cuidar nuestro espacio es parte de ser un buen equipo. ¡Gracias por su esfuerzo y dedicación!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
